@@ -1,0 +1,11 @@
+{
+  "type": "mysql",
+  "host": "database",
+  "port": 3306,
+  "username": "stock",
+  "password": "password",
+  "database": "stock_market",
+  "synchronize": "true",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "autoLoadEntities": "true"
+}

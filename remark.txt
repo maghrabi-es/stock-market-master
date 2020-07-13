@@ -1,0 +1,15 @@
+download tool from
+https://docs.docker.com/engine/install
+
+open command prompt at project folder and excecute the following commands
+
+docker-compose build web
+
+docker volume create --name=stock_market_data
+
+docker-compose up web
+
+at browser open 
+
+http://localhost:3000
+

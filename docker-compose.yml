@@ -1,0 +1,31 @@
+version: '2.1'
+
+volumes:
+  stock_market_data:
+    external: true
+
+services:
+  database:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - stock_market_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_USER: 'stock'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_DATABASE: 'stock_market'
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+      - '5000:5000'
+    expose:
+      - '3000'
+      - '5000'
+    tty: true
+    depends_on:
+      database:
+        condition: service_started
